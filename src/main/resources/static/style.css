@@ -1,0 +1,13 @@
+body{
+   background-image: url("img/home.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 1950px 2000px;
+}
+
+#menu_table{
+   margin-left: auto;
+   margin-right: auto;
+
+
+}
