@@ -8,6 +8,7 @@ public abstract class Pokemon {
     private int demage;
     private int energy;
     private int defense;
+    private String photo;
    // private boolean hunger;
 
     public Pokemon(String name, int demage,int energy) {
@@ -65,6 +66,7 @@ public abstract class Pokemon {
     protected void setEnergy(int energy) {
         this.energy = energy;
     }
+
 
     // protected abstract void eat(String food);
 

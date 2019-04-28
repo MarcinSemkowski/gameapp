@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+<table id="menu_table" style="width: 600px;" border="4" cellpadding="65">
+    <tbody>
+    <tr>
+        <td>Photo:<br>
+            <img class="img" src="../img/pikachu.jpg" height="150" width="150"></td>
+        <td th:text="${name}" ></td>
+        <td><a href="#">Feed:</a> </td>
+        <td><a href="#">Sleep:</a></td>
+        <td><a href="#">Exercise:</a></td>
 
+    </tr>
+    </tbody>
+</table>
+<div class="locations" style="text-align: center"  ><a  href="#">Shop</a></div>
+<div class="locations" style="text-align: center" ><a  href="#">Hospital</a></div>
+<div class="locations" style="text-align: center" ><a  href="#">Forrest</a></div>
 </body>
 </html>

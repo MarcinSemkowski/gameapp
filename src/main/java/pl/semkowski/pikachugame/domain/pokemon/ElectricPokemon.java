@@ -5,13 +5,8 @@ import pl.semkowski.pikachugame.type.Electric;
 
 public class ElectricPokemon extends Pokemon implements Electric {
 
-
-
-
     public ElectricPokemon(String name) {
         super(name,  10,100);
-
-
     }
 
 
@@ -72,5 +67,10 @@ public class ElectricPokemon extends Pokemon implements Electric {
     @Override
     public int discharge(int level) {
         return 0;
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
     }
 }
