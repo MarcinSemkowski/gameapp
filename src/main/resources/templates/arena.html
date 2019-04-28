@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -33,8 +33,9 @@
     <tbody>
     <tr>
         <td>Photo:<br>
-            <img class="img" src="../img/pikachu.jpg" height="150" width="150"></td>
-        <td></td>
+            <img th:src="${pikachu.getPhoto()}" height="150" width="150">
+        </td>
+        <td th:text="${pikachu.getName()}"></td>
         <td><form method="get">
             <input type="hidden" value="1" name="id">
             <select name="attackId">
@@ -63,9 +64,14 @@
             <input type="submit" value="use skill">
         </form></td>
 
+        <td>HP: <p th:text="${pikachu.getHitPoints()}"></p></td>
+        Energy:
+        <td> Energy: <p th:text="${pikachu.getEnergy()}"></p></td>
     </tr>
     </tbody>
 </table>
+
+<br>
 
 
 

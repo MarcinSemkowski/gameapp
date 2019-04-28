@@ -1,12 +1,17 @@
 package pl.semkowski.pikachugame.domain.pokemon;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import pl.semkowski.pikachugame.domain.Pokemon;
 import pl.semkowski.pikachugame.type.Electric;
 
 public class ElectricPokemon extends Pokemon implements Electric {
 
     public ElectricPokemon(String name) {
-        super(name,  10,100);
+        super(name,
+                10,
+                100,
+                "../img/pikachu.jpg");
     }
 
 

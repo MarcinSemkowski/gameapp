@@ -12,12 +12,17 @@ public abstract class Pokemon {
    // private boolean hunger;
     private long experiance;
 
-    public Pokemon(String name, int demage,int energy) {
+    public Pokemon(String name, int demage,int energy,String photo) {
         this.name = name;
         this.hitPoints = 100;
         this.level = 1;
         this.demage = demage;
         this.energy = energy;
+        this.photo = photo;
+    }
+
+    public String getPhoto() {
+        return photo;
     }
 
     protected int getDefense() {
@@ -36,7 +41,7 @@ public abstract class Pokemon {
         this.name = name;
     }
 
-    protected int getHitPoints() {
+    public int getHitPoints() {
         return hitPoints;
     }
 
@@ -60,7 +65,7 @@ public abstract class Pokemon {
         this.demage = demage;
     }
 
-    protected int getEnergy() {
+    public int getEnergy() {
         return energy;
     }
 

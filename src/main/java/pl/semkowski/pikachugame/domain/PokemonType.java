@@ -2,7 +2,7 @@ package pl.semkowski.pikachugame.domain;
 
 public enum PokemonType {
     Smoochum("Smoochum",100,1,10,100,10,
-            "<img class=\"img\" src=\"../img/enemy.png\" height=\"150\" width=\"150\"></td>");
+            "<img class=\"img\" src=\"../img/enemy.png\" height=\"150\" width=\"150\">");
     private String name;
     private int hitPoints;
     // private int stamina;

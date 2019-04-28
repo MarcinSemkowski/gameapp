@@ -1,5 +1,7 @@
 package pl.semkowski.pikachugame.domain.pokemon;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import pl.semkowski.pikachugame.domain.Pokemon;
 import pl.semkowski.pikachugame.type.Ice;
 
@@ -7,7 +9,10 @@ public class IcePokemon extends Pokemon implements Ice {
 
 
     public IcePokemon(String name) {
-        super(name, 20, 100);
+        super(name,
+                10,
+                100,
+                "<img class=\"img\" src=\"../img/enemy.png\" height=\"150\" width=\"150\">");
     }
 
     @Override
