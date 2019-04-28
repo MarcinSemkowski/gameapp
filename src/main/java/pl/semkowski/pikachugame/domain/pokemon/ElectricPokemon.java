@@ -7,6 +7,13 @@ import pl.semkowski.pikachugame.type.Electric;
 
 public class ElectricPokemon extends Pokemon implements Electric {
 
+    private final String SKILL_1 = "boltStrike";
+    private final String SKILL_2 = "charge";
+    private final String SKILL_3 = "electricTerrain";
+    private final String SPECIAL = " discharge";
+
+
+
     public ElectricPokemon(String name) {
         super(name,
                 10,
@@ -51,6 +58,23 @@ public class ElectricPokemon extends Pokemon implements Electric {
         return super.getName();
     }
 
+    public String getSKILL_1() {
+        return SKILL_1;
+    }
+
+    public String getSKILL_2() {
+        return SKILL_2;
+    }
+
+    public String getSKILL_3() {
+        return SKILL_3;
+    }
+
+    public String getSPECIAL() {
+        return SPECIAL;
+    }
+
+
     @Override
     public void menu(int choice, int attackChoice, int enemyAttack) {
         super.menu(choice, attackChoice, enemyAttack);
@@ -69,4 +93,6 @@ public class ElectricPokemon extends Pokemon implements Electric {
                 break;
         }
     }
+
+
 }

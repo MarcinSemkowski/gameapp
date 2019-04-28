@@ -57,9 +57,13 @@
         </td>
         <td><form method="get">
             Use Skill:
+            <p th:text="${pikachu.getSKILL_1()}"></p>
+            Attack anemy with thunder
             <select name="skillId">
-                <option value="3"> auroraBeam</option>
-                <option value="4">avalanche</option>
+                <option value="3" th:text="${pikachu.getSKILL_1()}"></option>
+                <option value="4" th:text="${pikachu.getSKILL_2()}"></option>
+                <option value="5" th:text="${pikachu.getSKILL_3()}"></option>
+                <option class="spec" value="6" th:text="${pikachu.getSPECIAL()}"></option>
             </select>
             <input type="submit" value="use skill">
         </form></td>
