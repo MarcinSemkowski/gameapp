@@ -10,36 +10,8 @@ public class ElectricPokemon extends Pokemon implements Electric {
     }
 
 
-    @Override
-    protected int attack(int choice) {
-        int damage=0;
-        switch(choice){
-             case 1:
-                 System.out.println("Attack with defense ,damage =5, energy -7");
 
 
-                setEnergy(getEnergy() - 5);
-
-                break;
-            case 2:
-                System.out.println("Pure attack , damage = 10 ,");
-
-                setEnergy(getEnergy() - 5);
-               damage = 10;
-                break;
-                default:
-
-                    break;
-         }
-     return damage;
-    }
-
-    @Override
-    protected int defense(int damage) {
-        System.out.println("Used defense skills  ");
-
-       return damage - getDefense();
-    }
 
     @Override
     protected void levelUP() {
@@ -72,5 +44,24 @@ public class ElectricPokemon extends Pokemon implements Electric {
     @Override
     public String getName() {
         return super.getName();
+    }
+
+    @Override
+    public void menu(int choice, int attackChoice, int enemyAttack) {
+        super.menu(choice, attackChoice, enemyAttack);
+        switch (choice){
+            case 3:
+                boltStrike(getLevel());
+                break;
+            case 4:
+                charge(getLevel());
+                break;
+            case 5:
+                electricTerrain(getLevel());
+                break;
+            case 6:
+                discharge(getLevel());
+                break;
+        }
     }
 }

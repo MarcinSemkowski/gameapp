@@ -10,6 +10,7 @@ public abstract class Pokemon {
     private int defense;
     private String photo;
    // private boolean hunger;
+    private long experiance;
 
     public Pokemon(String name, int demage,int energy) {
         this.name = name;
@@ -72,9 +73,51 @@ public abstract class Pokemon {
 
    // protected abstract int sleep(int time);
 
-    protected abstract int attack(int choice);
+    protected  int attack(int choice,int level){
+        int damage=0;
+        switch(choice){
+            case 1:
+                System.out.println("Attack with defense ,damage =5, energy -7");
 
-    protected abstract int defense(int damage);
 
-    protected abstract void levelUP();
+                setEnergy(getEnergy() - 5);
+
+                break;
+            case 2:
+                System.out.println("Pure attack , damage = 10 ,");
+
+                setEnergy(getEnergy() - 5);
+                damage = 10;
+                break;
+            default:
+
+                break;
+        }
+        return damage;
+    }
+
+    protected  int defense(int damage){
+        System.out.println("Used defense skills  ");
+        this.energy += 10;
+        return damage - getDefense();
+    }
+
+    protected  void levelUP(){
+        setDemage(getDemage() + 5);
+        setLevel(getLevel()+ 1);
+        setDefense(getDefense()+ 5);
+        setEnergy(getEnergy() + 5);
+    }
+
+    public void menu(int choice,int attackChoice,int enemyAttack){
+        switch (choice){
+            case 1:
+                attack(attackChoice,this.level);
+                break;
+            case 2:
+                defense(enemyAttack);
+                break;
+
+        }
+    }
 }
