@@ -1,16 +1,14 @@
 package pl.semkowski.pikachugame.domain.pokemon;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import pl.semkowski.pikachugame.domain.Pokemon;
 import pl.semkowski.pikachugame.type.Electric;
 
 public class ElectricPokemon extends Pokemon implements Electric {
 
-    private final String SKILL_1 = "boltStrike";
-    private final String SKILL_2 = "charge";
-    private final String SKILL_3 = "electricTerrain";
-    private final String SPECIAL = " discharge";
+    private final String SKILL_1_NAME = "boltStrike";
+    private final String SKILL_2_NAME = "charge";
+    private final String SKILL_3_NAME = "electricTerrain";
+    private final String SPECIAL_SKILL_NAME = " discharge";
 
 
 
@@ -27,10 +25,7 @@ public class ElectricPokemon extends Pokemon implements Electric {
 
     @Override
     protected void levelUP() {
-        setDemage(getDemage() + 5);
-        setLevel(getLevel()+ 1);
-        setDefense(getDefense()+ 5);
-        setEnergy(getEnergy() + 5);
+
     }
 
     @Override
@@ -53,45 +48,46 @@ public class ElectricPokemon extends Pokemon implements Electric {
         return 0;
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    public String getSKILL_1() {
-        return SKILL_1;
-    }
-
-    public String getSKILL_2() {
-        return SKILL_2;
-    }
-
-    public String getSKILL_3() {
-        return SKILL_3;
-    }
-
-    public String getSPECIAL() {
-        return SPECIAL;
-    }
 
 
     @Override
-    public void menu(int choice, int attackChoice, int enemyAttack) {
-        super.menu(choice, attackChoice, enemyAttack);
-        switch (choice){
-            case 3:
-                boltStrike(getLevel());
-                break;
-            case 4:
-                charge(getLevel());
-                break;
-            case 5:
-                electricTerrain(getLevel());
-                break;
-            case 6:
-                discharge(getLevel());
-                break;
-        }
+    public int skillOne() {
+      return    boltStrike(this.getLevel());
+    }
+
+    @Override
+    public int skillTwo() {
+     return   charge(this.getLevel());
+    }
+
+    @Override
+    public int skillThree() {
+     return   electricTerrain(this.getLevel());
+    }
+
+    @Override
+    public int skillSpecial() {
+      return discharge(this.getLevel());
+    }
+
+    @Override
+    public String getSkillOneName() {
+        return SKILL_1_NAME;
+    }
+
+    @Override
+    public String getSkillTwoName() {
+        return SKILL_2_NAME;
+    }
+
+    @Override
+    public String getSkillThreeName() {
+        return SKILL_3_NAME;
+    }
+
+    @Override
+    public String getSkillSpecialName() {
+        return SPECIAL_SKILL_NAME;
     }
 
 

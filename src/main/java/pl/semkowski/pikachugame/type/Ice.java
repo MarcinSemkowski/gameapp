@@ -2,9 +2,9 @@ package pl.semkowski.pikachugame.type;
 
 public interface Ice {
 
-    void auroraBeam();
-    void avalanche();
-    void blizzard();
-    void glaciate();
+  int auroraBeam();
+    int avalanche();
+    int blizzard();
+    int glaciate();
 
 }

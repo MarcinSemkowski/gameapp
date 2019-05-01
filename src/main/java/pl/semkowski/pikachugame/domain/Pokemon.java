@@ -33,7 +33,7 @@ public abstract class Pokemon {
         this.defense = defense;
     }
 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 
@@ -45,8 +45,11 @@ public abstract class Pokemon {
         return hitPoints;
     }
 
-    protected void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
+    public void setHitPoints(int hitPoints) {
+        if(hitPoints < 0)
+        this.hitPoints = 0;
+        else
+          this.hitPoints = hitPoints;
     }
 
     protected int getLevel() {
@@ -78,33 +81,20 @@ public abstract class Pokemon {
 
    // protected abstract int sleep(int time);
 
-    protected  int attack(int choice,int level){
-        int damage=0;
-        switch(choice){
-            case 1:
-                System.out.println("Attack with defense ,damage =5, energy -7");
+    public int attack(){
+        System.out.println("Attack !!!!!");
 
-
-                setEnergy(getEnergy() - 5);
-
-                break;
-            case 2:
-                System.out.println("Pure attack , damage = 10 ,");
-
-                setEnergy(getEnergy() - 5);
-                damage = 10;
-                break;
-            default:
-
-                break;
-        }
-        return damage;
+        return demage;
     }
 
-    protected  int defense(int damage){
+    public int defense(int damage){
+        int block = damage - getDefense();
+         System.out.println("Block =  " + block);
+        return damage - getDefense();
+    }
+    public void defense(){
         System.out.println("Used defense skills  ");
         this.energy += 10;
-        return damage - getDefense();
     }
 
     protected  void levelUP(){
@@ -114,15 +104,17 @@ public abstract class Pokemon {
         setEnergy(getEnergy() + 5);
     }
 
-    public void menu(int choice,int attackChoice,int enemyAttack){
-        switch (choice){
-            case 1:
-                attack(attackChoice,this.level);
-                break;
-            case 2:
-                defense(enemyAttack);
-                break;
 
-        }
+    public abstract int skillOne();
+    public abstract int skillTwo();
+    public abstract int skillThree();
+    public abstract int skillSpecial();
+    public abstract String getSkillOneName();
+    public abstract String getSkillTwoName();
+    public abstract String getSkillThreeName();
+    public abstract String getSkillSpecialName();
+
+
+
     }
-}
+
