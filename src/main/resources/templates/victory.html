@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="arena.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1 th:utext="((${playerWon}) ? ((${player1Won.getName()})) : ((${player2Won.getName()})) )"></h1>
+
+<img class="img_win" th:src="((${playerWon}) ? ((${player1Won.getPhoto()})) : ((${player2Won.getPhoto()})) )"
+     height="150" width="150"/>
+
+
+
+     <h1>Win!</h1>
+</body>
+</html>
