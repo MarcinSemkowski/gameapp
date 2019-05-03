@@ -79,6 +79,8 @@ public class ArenaController {
 
              model.addAttribute("isPlayerChoose_1" ,isPlayerChoose1);
              model.addAttribute("warning",warning);
+             String song ="soundsample/battle.mp3";
+             model.addAttribute("song",song);
              return "arena";
          }
     }

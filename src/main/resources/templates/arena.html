@@ -3,89 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../arena.css">
+    <link rel="stylesheet" href="arena.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
+    <script>
+
+
+    </script>
+
+
 </head>
+
+
 <body>
 
 
-<table class="menu_table" style="width: 600px;" border="4" cellpadding="65">
+<table class="menu_table"  style="width: 600px;" border="16" cellpadding="65">
+
+
+
     <tbody>
+
     <tr>
-        <td>Photo:<br>
-            <img th:src="${player1.getPhoto()}" height="150" width="150"></td>
-        <td th:text="${player1.getName()}"></td>
+        <td><br>
+            <img  height="150" width="150" th:src="${player1.getPhoto()}"></td>
+        <td th:text="${player1.getName()}">pikachuj</td>
         <td th:if="${isPlayerChoose_1}" >
             <form method= post>
-                 <select name="id">
-                     <option   class="base" value="1">pure attack</option>
-                     <option  class="base" value="2">Defense</option>
-                     <option class="skills" value="3" th:text="${player1.getSkillOneName()}"> </option>
-                     <option class="skills" value="4" th:text="${player1.getSkillTwoName()}"> </option>
-                     <option class="skills" value="5" th:text="${player1.getSkillThreeName()}"> </option>
-                     <option class="spec" value="6" th:text="${player1.getSkillSpecialName()}"></option>
-                                </select>
-                 <input type="hidden" value="1" name="playerId">
+                <div class="styled-select blue semi-square" >
+                <select name="id">
+                    <option   class="base" value="1">pure attack</option>
+                    <option  class="base" value="2">Defense</option>
+                    <option class="skills" value="3" th:text="${player1.getSkillOneName()}">Skill one </option>
+                    <option class="skills" value="4" th:text="${player1.getSkillTwoName()}">Skill two </option>
+                    <option class="skills" value="5" th:text="${player1.getSkillThreeName()}">  Skill three</option>
+                    <option class="spec" value="6" th:text="${player1.getSkillSpecialName()}">  special</option>
+                </select> </div>
+                <input type="hidden" value="1" name="playerId">
                 <input type="hidden" value="2" name="chooseId">
                 <input type="submit" value="choose">" +
-                </form>
 
-         </td>
+            </form>
+
+        </td>
         <td th:unless="${isPlayerChoose_1}" th:text="${warning}"></td>
 
 
 
         <td></td>
 
-        <td>HP: <p th:text="${player1.getHitPoints()}"></p></td>
+        <td>HP: <p th:text="${player1.getHitPoints()}"> 100</p></td>
 
-        <td> Energy: <p th:text="${player1.getEnergy()}"></p></td>
+        <td> Energy: <p th:text="${player1.getEnergy()}">100</p></td>
     </tr>
     </tbody>
 </table>
+<br>
+<br>
+
+
+
+<h1> VS </h1>
 
 
 
 
-
-
-    <h1> VS </h1>
-
-
-
-
-<table class="menu_table" style="width: 600px;" border="4" cellpadding="65">
+<table class="menu_table" style="width: 600px;" border="16" cellpadding="65">
     <tbody>
     <tr>
         <td>Photo:<br>
-            <img th:src="${player2.getPhoto()}" height="150" width="150">
+            <img height="150" width="150" th:src="${player2.getPhoto()}">
         </td>
         <td th:text="${player2.getName()}"></td>
         <td th:unless="${isPlayerChoose_1}" >
             <form method= post>
-                <select name="id">
-                <option   class="base" value="1">pure attack</option>
-                <option  class="base" value="2">Defense</option>
-                <option class="skills" value="3" th:text="${player2.getSkillOneName()}"> </option>
-                <option class="skills" value="4" th:text="${player2.getSkillTwoName()}"> </option>
-                <option class="skills" value="5" th:text="${player2.getSkillThreeName()}"> </option>
-                <option class="spec" value="6" th:text="${player2.getSkillSpecialName()}"></option>
-            </select>
+                <div class="styled-select blue semi-square">
+                    <select name="id">
+                        <option   class="base" value="1">pure attack</option>
+                        <option  class="base" value="2">Defense</option>
+                        <option class="skills" value="3" th:text="${player2.getSkillOneName()}"> pure attack</option>
+                        <option class="skills" value="4" th:text="${player2.getSkillTwoName()}">defense </option>
+                        <option class="skills" value="5" th:text="${player2.getSkillThreeName()}">skill tthree</option>
+                        <option class="spec" value="6" th:text="${player2.getSkillSpecialName()}">skill specisl</option>
+                    </select></div>
                 <input type="hidden" value="2" name="playerId">
                 <input type="hidden" value="1" name="chooseId">
                 <input type="submit" value="choose">
+
             </form>
         </td>
         <td th:if="${isPlayerChoose_1}" th:text="${warning}"></td>
-        <td></td>
+        <td>
 
-        <td>HP: <p th:text="${player2.getHitPoints()}"></p></td>
-        Energy:
-        <td> Energy: <p th:text="${player2.getEnergy()}"></p></td>
+        </td>
+
+        <td>HP: <p th:text="${player2.getHitPoints()}"></p> 100</td>
+        <td> Energy: <p th:text="${player2.getEnergy()}"></p> 100</td>
     </tr>
     </tbody>
 </table>
 
 <br>
+<div><embed th:src="${song}" th:autoplay="true" loop="true" /></div>
 
 
 

@@ -16,7 +16,7 @@ public class IcePokemon extends Pokemon implements Ice {
         super(name,
                 10,
                 100,
-                "../img/enemy.png");
+                "../img/sandshrew.png");
     }
 
 
