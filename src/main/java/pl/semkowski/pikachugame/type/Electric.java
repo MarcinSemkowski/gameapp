@@ -1,13 +1,13 @@
 package pl.semkowski.pikachugame.type;
 
+import pl.semkowski.pikachugame.domain.Pokemon;
+
 public interface Electric {
 
-    int boltStrike(int level);
+    boolean boltStrike(Pokemon enemy);
 
-    int charge(int level);
+    boolean charge(Pokemon enemy);
 
-    int electricTerrain(int level);
-
-    int discharge(int level);
+    boolean discharge(Pokemon enemy);
 
 }

@@ -201,3 +201,14 @@ select#soflow-color {
    border-radius: 20px;
    padding-left: 15px;
 }
+
+.shows{
+  float: left;
+   font-size: 15px;
+   color: blue;
+}
+.showsp{
+   float: left;
+   font-size: 15px;
+   color: red;
+}

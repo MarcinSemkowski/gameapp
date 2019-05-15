@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="arena.css" type="text/css">
+
+
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 
     <script>
@@ -27,21 +29,29 @@
     <tr>
         <td><br>
             <img  height="150" width="150" th:src="${player1.getPhoto()}"></td>
-        <td th:text="${player1.getName()}">pikachuj</td>
+        <td>
+            <p class="show"th:text="${player1.getName()}"></p>
+            Podstawowy atak : <p class="show" th:text="${player1.getDamage()}"></p>
+            <br>
+            Obrona : <p class="show" th:text="${player1.getDefense()}"></p>
+            <br>
+            Pasywa : <p class="shows" th:text="${player1.getPassive()}"></p>
+
+
+        </td>
         <td th:if="${isPlayerChoose_1}" >
-            <form method= post>
+            <form method= post action="fight">
                 <div class="styled-select blue semi-square" >
                 <select name="id">
-                    <option   class="base" value="1">pure attack</option>
-                    <option  class="base" value="2">Defense</option>
+                    <option   class="base" value="1">Atak</option>
+                    <option  class="base" value="2">Obrona</option>
                     <option class="skills" value="3" th:text="${player1.getSkillOneName()}">Skill one </option>
                     <option class="skills" value="4" th:text="${player1.getSkillTwoName()}">Skill two </option>
-                    <option class="skills" value="5" th:text="${player1.getSkillThreeName()}">  Skill three</option>
-                    <option class="spec" value="6" th:text="${player1.getSkillSpecialName()}">  special</option>
+                    <option class="spec" value="5" th:text="${player1.getSkillSpecialName()}">  special</option>
                 </select> </div>
                 <input type="hidden" value="1" name="playerId">
                 <input type="hidden" value="2" name="chooseId">
-                <input type="submit" value="choose">" +
+                <input type="submit" value="choose">
 
             </form>
 
@@ -50,7 +60,23 @@
 
 
 
-        <td></td>
+        <td>
+            Umiejętności:
+            <p class="shows" th:text="${player1.getSkillOneName()}"></p>
+            </br>
+            <p class="shows" th:text="${player1.getSkillOneDescription()}"></p>
+
+            <p class="shows" th:text="${player1.getSkillTwoName()}"></p>
+            </br>
+            <p class="shows" th:text="${player1.getSkillTwoDescription()}"></p>
+
+            <p class="showsp" th:text="${player1.getSkillSpecialName()}"></p>
+            </br>
+            <p class="showsp" th:text="${player1.getSkillSpecialDescription()}"></p>
+
+
+
+        </td>
 
         <td>HP: <p th:text="${player1.getHitPoints()}"> 100</p></td>
 
@@ -74,17 +100,25 @@
         <td>Photo:<br>
             <img height="150" width="150" th:src="${player2.getPhoto()}">
         </td>
-        <td th:text="${player2.getName()}"></td>
+        <td>
+           <p class="show"th:text="${player2.getName()}"></p>
+            Podstawowy atak : <p class="show" th:text="${player2.getDamage()}"></p>
+            <br>
+            Obrona : <p class="show" th:text="${player2.getDefense()}"></p>
+            <br>
+            Pasywa : <p class="shows" th:text="${player2.getPassive()}"></p>
+
+
+        </td>
         <td th:unless="${isPlayerChoose_1}" >
-            <form method= post>
+            <form method= post action="fight">
                 <div class="styled-select blue semi-square">
                     <select name="id">
-                        <option   class="base" value="1">pure attack</option>
-                        <option  class="base" value="2">Defense</option>
-                        <option class="skills" value="3" th:text="${player2.getSkillOneName()}"> pure attack</option>
-                        <option class="skills" value="4" th:text="${player2.getSkillTwoName()}">defense </option>
-                        <option class="skills" value="5" th:text="${player2.getSkillThreeName()}">skill tthree</option>
-                        <option class="spec" value="6" th:text="${player2.getSkillSpecialName()}">skill specisl</option>
+                        <option   class="base" value="1"> Atak</option>
+                        <option  class="base" value="2">Obrona</option>
+                        <option class="skills" value="3" th:text="${player2.getSkillOneName()}"></option>
+                        <option class="skills" value="4" th:text="${player2.getSkillTwoName()}"> </option>
+                        <option class="spec" value="5" th:text="${player2.getSkillSpecialName()}"></option>
                     </select></div>
                 <input type="hidden" value="2" name="playerId">
                 <input type="hidden" value="1" name="chooseId">
@@ -92,19 +126,32 @@
 
             </form>
         </td>
-        <td th:if="${isPlayerChoose_1}" th:text="${warning}"></td>
         <td>
+            Umiejętności:
+            <p class="shows" th:text="${player2.getSkillOneName()}"></p>
+            </br>
+            <p class="shows" th:text="${player2.getSkillOneDescription()}"></p>
+
+            <p class="shows" th:text="${player2.getSkillTwoName()}"></p>
+            </br>
+            <p class="shows" th:text="${player2.getSkillTwoDescription()}"></p>
+
+            <p class="showsp" th:text="${player2.getSkillSpecialName()}"></p>
+            </br>
+            <p class="showsp" th:text="${player2.getSkillSpecialDescription()}"></p>
+
 
         </td>
+        <td th:if="${isPlayerChoose_1}" th:text="${warning}"></td>
 
-        <td>HP: <p th:text="${player2.getHitPoints()}"></p> 100</td>
-        <td> Energy: <p th:text="${player2.getEnergy()}"></p> 100</td>
+        <td>HP: <p th:text="${player2.getHitPoints()}"></p> </td>
+        <td> Energy: <p th:text="${player2.getEnergy()}"></p></td>
     </tr>
     </tbody>
 </table>
 
 <br>
-<div><embed th:src="${song}" th:autoplay="true" loop="true" /></div>
+<div><embed src="soundsample/battle.mp3" autostrt="true" loop="true" /></div>
 
 
 
