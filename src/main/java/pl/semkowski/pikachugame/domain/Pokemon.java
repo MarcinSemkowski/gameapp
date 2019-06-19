@@ -1,5 +1,6 @@
 package pl.semkowski.pikachugame.domain;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Pokemon {
@@ -21,6 +22,35 @@ public abstract class Pokemon {
     private int passive;
     private  String type;
     private boolean isDefenseOn;
+    private Random rand = new Random();
+
+
+
+    public Pokemon(String name, int hitPoints, int level, int damage, int energy, int defense, String photo,
+                   String attackGif, String skillOneGif, String skillTwoGif,
+                   String skillSpecialGif, String defenseGif,
+                   String damageGif, String reactionGif, String type) {
+        this.name = name;
+        this.hitPoints = hitPoints;
+        this.level = level;
+        this.damage = damage;
+        this.energy = energy;
+        this.defense = defense;
+        this.photo = photo;
+        this.attackGif = attackGif;
+        this.skillOneGif = skillOneGif;
+        this.skillTwoGif = skillTwoGif;
+        this.skillSpecialGif = skillSpecialGif;
+        this.defenseGif = defenseGif;
+        DamageGif = damageGif;
+        this.reactionGif = reactionGif;
+        this.type = type;
+        this.passive = 0;
+
+
+    }
+
+
 
 
     public String getAttackGif() {
@@ -88,27 +118,6 @@ public abstract class Pokemon {
         isDefenseOn = defenseOn;
     }
 
-    public Pokemon(String name, int hitPoints, int level, int damage, int energy, int defense, String photo,
-                   String attackGif, String skillOneGif, String skillTwoGif,
-                   String skillSpecialGif, String defenseGif,
-                   String damageGif, String reactionGif, String type) {
-        this.name = name;
-        this.hitPoints = hitPoints;
-        this.level = level;
-        this.damage = damage;
-        this.energy = energy;
-        this.defense = defense;
-        this.photo = photo;
-        this.attackGif = attackGif;
-        this.skillOneGif = skillOneGif;
-        this.skillTwoGif = skillTwoGif;
-        this.skillSpecialGif = skillSpecialGif;
-        this.defenseGif = defenseGif;
-        DamageGif = damageGif;
-        this.reactionGif = reactionGif;
-        this.type = type;
-        this.passive = 0;
-    }
 
     public String getPhoto() {
         return photo;
@@ -205,7 +214,6 @@ public abstract class Pokemon {
     }
 
     public int defense(int damage){
-        //todo CONVERT NAGATIVE NUMBER TO POSITIVE AND OVERWRITE METHOD  TO ICE POKEMON TYPE
 
         int block = getDefense() - damage;
         if(block < 0){
@@ -232,36 +240,36 @@ public abstract class Pokemon {
        int damage =0;
         if(getPassive() == 100) {
             if (this.getEnergy() < 10) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 2, this.damage + 6);
+                damage = ThreadLocalRandom.current().nextInt(15, 25 );
             } else if (this.getEnergy() < 30) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 3, this.damage + 12);
+                damage = ThreadLocalRandom.current().nextInt(25, 30);
             } else if (this.getEnergy() < 50) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 5, this.damage + 10);
+                damage = ThreadLocalRandom.current().nextInt(30, 35);
             } else if (this.getEnergy() < 70) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 7, this.damage + 30);
+                damage = ThreadLocalRandom.current().nextInt(35, 40);
             } else if (this.getEnergy() < 90) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 21, this.damage + 40);
+                damage = ThreadLocalRandom.current().nextInt(40, 45);
             } else if (this.getEnergy() >= 100) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 30, this.damage + 58);
+                damage = ThreadLocalRandom.current().nextInt(50,55 );
             } else if (this.getEnergy() >= 200) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 30, this.damage + 70);
+                damage = ThreadLocalRandom.current().nextInt(60, 65);
             }
         }
         else{
             if (this.getEnergy() < 10) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage , this.damage +5);
+                damage = ThreadLocalRandom.current().nextInt(2 , 10);
             } else if (this.getEnergy() < 30) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage , this.damage + 10);
+                damage = ThreadLocalRandom.current().nextInt(10 , 13);
             } else if (this.getEnergy() < 50) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage , this.damage + 15 );
+                damage = ThreadLocalRandom.current().nextInt(13, 18 );
             } else if (this.getEnergy() < 70) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage, this.damage + 20);
+                damage = ThreadLocalRandom.current().nextInt(18, 26);
             } else if (this.getEnergy() < 90) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage , this.damage + 25);
-            } else if (this.getEnergy() >= 100) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 30, this.damage + 30);
-            } else if (this.getEnergy() >= 200) {
-                damage = ThreadLocalRandom.current().nextInt(this.damage + 30, this.damage + 50);
+                damage = ThreadLocalRandom.current().nextInt(26 , 35);
+            } else if (this.getEnergy() > 100) {
+                damage = ThreadLocalRandom.current().nextInt(35, 40);
+            } else if (this.getEnergy() > 200) {
+                damage = ThreadLocalRandom.current().nextInt(45, 50);
             }
         }
 

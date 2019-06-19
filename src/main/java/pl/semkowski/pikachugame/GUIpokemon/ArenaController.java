@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 public class ArenaController {
 
+    public boolean error;
 
     private boolean player1Won = false;
 
@@ -50,7 +51,9 @@ public class ArenaController {
 
         String error = round.fight(id, playerId);
         if (!error.isEmpty()) {
-            model.addAttribute("error", error);
+             this.error = true;
+            model.addAttribute("errorM", error);
+            model.addAttribute("error",this.error);
         }
 
 
@@ -67,7 +70,7 @@ public class ArenaController {
             return "victory";
         }
 
-
+         this.error = false;
         model.addAttribute("content", "5; http://localhost:8080/arena?chooseId=" + chooseId);
         model.addAttribute("player1", player1);
         model.addAttribute("player2", player2);

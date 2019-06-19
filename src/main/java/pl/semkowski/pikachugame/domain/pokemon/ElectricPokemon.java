@@ -10,9 +10,9 @@ public class ElectricPokemon extends Pokemon implements Electric {
     private final String SKILL_1_NAME = " Uderzenie piorunem";
     private final String SKILL_1_DESCRIPTION =  this.getName() + "strzela wstrząsem elektryczności, aby zaatakować cel.\n" +
             "\n" +
-            "-Koszt Energii: 30\n" +
+            "-Koszt Energii: 50\n" +
             "\n" +
-            "Obrażenia: 30% energii przeciwnika jako obrażenia  nieuchronne\n" +
+            "Obrażenia: 20\n" +
             "\n" +
             "\n" +
             "Pasywa: 30";
@@ -54,29 +54,32 @@ public class ElectricPokemon extends Pokemon implements Electric {
 
     @Override
     public boolean boltStrike(Pokemon enemy) {
-        //damage enemy energy  from % enemy energy pokemon
+
+        boolean result = this.setEnergy(50,true,true);
+        if(!result){
+            return false;
+        }
           if(this.getPassive() == 100) {
-              this.skillOneDamage =  (30 / 100) * enemy.getEnergy();
-              enemy.setHitPoints(enemy.getHitPoints() - this.skillOneDamage);
+              enemy.setHitPoints(enemy.getHitPoints() - 40);
              this.setPassive(0);
-             this.setEnergy(20,true,true);
+
+            return true;
           }
-           else
-              this.skillOneDamage =  (10 / 100) * enemy.getEnergy();
-              enemy.setHitPoints(enemy.getHitPoints() - this.skillOneDamage);
-              this.setEnergy(30,true,true);
-        this.setPassive(getPassive() + 30);
+           else {
 
+              enemy.setHitPoints(enemy.getHitPoints() - 20);
 
-        return false;
+              this.setPassive(getPassive() + 30);
+
+              return true;
+          }
     }
 
     @Override
     public boolean charge(Pokemon enemy) {
-       // charging theft energy from enemy
         int theftEnergy ;
         if(this.getPassive() == 100){
-            theftEnergy =  ThreadLocalRandom.current().nextInt(60 , 90 +1);
+            theftEnergy = 40;
             enemy.setEnergy(theftEnergy, true, true);
             this.setEnergy(theftEnergy, true, false);
             this.setPassive(0);
@@ -94,20 +97,14 @@ public class ElectricPokemon extends Pokemon implements Electric {
 
         }
         else {
-            theftEnergy =  ThreadLocalRandom.current().nextInt(10 , 25 +1);
+            theftEnergy = 20;
             enemy.setEnergy(theftEnergy, true, true);
             this.setEnergy(theftEnergy, true, false);
               this.setPassive(getPassive() + 30);
             this.skillTwoDamage = theftEnergy;
-            if (enemy.isDefenseOn()) {
-                enemy.setHitPoints(enemy.defense(theftEnergy));
-                this.setPassive(getPassive() + 30);
-                return true;
-            }
-            else{
-                enemy.setHitPoints(theftEnergy);
-               return true;
-            }
+             this.setPassive(getPassive() + 30);
+            return true;
+
         }
 
 
@@ -115,12 +112,25 @@ public class ElectricPokemon extends Pokemon implements Electric {
 
     @Override
     public boolean discharge(Pokemon enemy) {
-        int damage = countDamage();
-        enemy.setHitPoints(getHitPoints() - damage);
-        this.setEnergy(0,false,false);
-        skillSpecialDamage = damage;
 
-        return false;
+        boolean result =  this.setEnergy(100,true,true);
+        if(!result){
+            return false;
+        }
+        if (this.getEnergy() == 0) {
+            return false;
+        }
+        int damage;
+        if(this.getPassive() == 100) {
+            damage = 70;
+        }
+        else{
+            damage = 40;
+        }
+        this.setDefense(getDefense() + damage);
+        enemy.setHitPoints(enemy.getHitPoints() - damage);
+
+       return true;
     }
 
     @Override
@@ -173,18 +183,17 @@ public class ElectricPokemon extends Pokemon implements Electric {
 
     @Override
     public String getSkillOneDescription(Pokemon enemyPokemon) {
-        return this.getName() + "Używa Uderzenie piorunem na "+ enemyPokemon.getName() + "Obrażenia "
-                + this.skillOneDamage;
+        return this.getName() + "Używa Uderzenie piorunem na "+ enemyPokemon.getName();
     }
 
     @Override
     public String getSkillTwoDescription(Pokemon enemyPokemon) {
-        return this.getName() + "Używa Ładowanie, Kradzież energii i Obrażenia :  " + this.skillTwoDamage;
+        return this.getName() + "Używa Ładowanie";
     }
 
     @Override
     public String getSkillSpecialDescription(Pokemon enemyPokemon) {
-        return this.getName() + "Używa  Rozładowanie , Obrażenia :  " + this.skillSpecialDamage;
+        return this.getName() + " Używa  Rozładowanie";
     }
 
 

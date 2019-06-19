@@ -78,9 +78,9 @@
 
         </td>
 
-        <td>HP: <p th:text="${player1.getHitPoints()}"> 100</p></td>
+        <td>HP: <p th:text="${player1.getHitPoints()}"> </p>/110</td>
 
-        <td> Energy: <p th:text="${player1.getEnergy()}">100</p></td>
+        <td> Energy: <p th:text="${player1.getEnergy()}"></p>/100</td>
     </tr>
     </tbody>
 </table>
@@ -144,8 +144,8 @@
         </td>
         <td th:if="${isPlayerChoose_1}" th:text="${warning}"></td>
 
-        <td>HP: <p th:text="${player2.getHitPoints()}"></p> </td>
-        <td> Energy: <p th:text="${player2.getEnergy()}"></p></td>
+        <td>HP: <p th:text="${player2.getHitPoints()}"></p>/110 </td>
+        <td> Energy: <p th:text="${player2.getEnergy()}"></p>/100</td>
     </tr>
     </tbody>
 </table>
