@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="arena.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <meta http-equiv="refresh" th:content="${content}" >
+    <script>
+
+
+    </script>
+
+
+</head>
+
+
+<body>
+
+
+
+<div class="gif" th:if="${playerId == 1}">
+    <div class="gif" th:if="${id == 1}">
+        <img th:src="${player1.getAttackGif()}" height="290" width="390" border= "5px solid red" >
+    </div>
+
+    <div class="gif" th:if="${id == 2}">
+        <img th:src="${player1.getDefenseGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 3}">
+        <div class="gif" th:if="${error}">
+            <img th:src="${player1.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${errorM}"></p>
+        </div>
+        <div class="gif" th:unless="${error}">
+            <img th:src="${player1.getSkillOneGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${player1.getSkillOneDescription(player2)}"></p>
+        </div>
+    </div>
+    <div class="gif" th:if="${id == 4}">
+        <div class="gif" th:if="${error}">
+            <img th:src="${player1.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${errorM}"></p>
+        </div>
+        <div class="gif" th:unless="${error}">
+            <img th:src="${player1.getSkillTwoGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${player1.getSkillTwoDescription(player1)}"></p>
+        </div>
+     </div>
+
+    <div class="gif" th:if="${id == 5}">
+        <div class="gif" th:if="${error}">
+            <img th:src="${player1.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${errorM}"></p>
+        </div>
+        <div class="gif" th:unless="${error}">
+            <img th:src="${player1.getSkillSpecialGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${player1.getSkillSpecialDescription(player1)}"></p>
+        </div>    </div>
+</div>
+
+<div class="gif" th:if="${playerId == 2}">
+
+    <div class="gif" th:if="${id == 1}">
+        <img th:src="${player1.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 2}">
+        <img th:src="${player1.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 3}">
+        <img th:src="${player1.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+    <div class="gif" th:if="${id == 4}">
+        <img th:src="${player1.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 5}">
+        <img th:src="${player1.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+</div>
+
+
+
+
+<br>
+<br>
+
+
+
+<h1 > VS </h1>
+
+<div class="gif" th:if="${playerId == 2}">
+    <div class="gif" th:if="${id == 1}">
+        <img th:src="${player2.getAttackGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 2}">
+        <img th:src="${player2.getDefenseGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+
+    </div>
+
+    <div class="gif" th:if="${id == 3}">
+        <div class="gif" th:if="${error}">
+            <img th:src="${player2.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${errorM}"></p>
+        </div>
+        <div class="gif" th:unless="${error}">
+            <img th:src="${player2.getSkillOneGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${player2.getSkillOneDescription(player1)}"></p>
+        </div>
+    </div>
+    <div class="gif" th:if="${id == 4}">
+        <div class="gif" th:if="${error}">
+            <img th:src="${player2.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${errorM}"></p>
+        </div>
+        <div class="gif" th:unless="${error}">
+            <img th:src="${player2.getSkillTwoGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${player2.getSkillTwoDescription(player1)}"></p>
+        </div>
+    </div>
+
+    <div class="gif" th:if="${id == 5}">
+
+        <div class="gif" th:if="${error}">
+            <img th:src="${player2.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${errorM}"></p>
+        </div>
+        <div class="gif" th:unless="${error}">
+            <img th:src="${player2.getSkillSpecialGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+            <p th:text="${player2.getSkillSpecialDescription(player1)}"></p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="gif" th:if="${playerId == 1}">
+    <div class="gif" th:if="${id == 1}">
+        <img th:src="${player2.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 2}">
+        <img th:src="${player2.getReactionGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 3}">
+        <img th:src="${player2.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+    <div class="gif" th:if="${id == 4}">
+        <img th:src="${player2.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+
+    <div class="gif" th:if="${id == 5}">
+        <img th:src="${player2.getDamageGif()}" height="290" width="390" border= "5px solid red" style="color: red" >
+    </div>
+</div>
+
+<br>
+<div ><embed src="soundsample/battle.mp3" autostrt="true" loop="true" /></div>
+
+
+
+</body>
+</html>
