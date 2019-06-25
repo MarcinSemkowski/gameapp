@@ -4,12 +4,23 @@ public class Player {
 
     private String name;
     private long money;
-    private Pokemon pokemon;
+    private int pokemon;
+    private String email;
 
-    public Player(String name, long money, Pokemon pokemon) {
+    public Player(String name, long money, int pokemon,String email) {
         this.name = name;
         this.money = money;
         this.pokemon = pokemon;
+        this.email = email;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -28,11 +39,11 @@ public class Player {
         this.money = money;
     }
 
-    public Pokemon getPokemon() {
+    public int getPokemon() {
         return pokemon;
     }
 
-    public void setPokemon(Pokemon pokemon) {
+    public void setPokemon(int pokemon) {
         this.pokemon = pokemon;
     }
 }
