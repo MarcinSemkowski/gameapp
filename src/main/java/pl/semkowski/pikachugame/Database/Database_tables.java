@@ -2,7 +2,7 @@ package pl.semkowski.pikachugame.Database;
 
 public enum Database_tables {
 
-PLAYERS("p_id","p_nick","p_email","p_password","pokemon_id");
+PLAYERS("p_id","p_nick","p_email","p_password","p_pokemon_id");
 
 
 

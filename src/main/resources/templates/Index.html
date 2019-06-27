@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,7 +13,12 @@
             <h1>Pokemon Game App </h1>
             <p>Zarejestruj się:</p>
             <div>
-                <input type="text" placeholder="Adres e-mail:" required="" id="username" />
+                <input type="text" placeholder="Nick:" required="" id="nick" />
+                  <p th:text="${error}"></p>
+            </div>
+
+            <div>
+                <input type="text" placeholder="Adres e-mail:" required="" id="email" />
             </div>
             <div>
                 <input type="password" placeholder="Hasło:" required="" id="password" />
@@ -21,7 +26,7 @@
             <div>
                 <input type="submit" value="Zarejestruj się" />
                 <a href="#">Lost your password?</a>
-                <a href="#">Register</a>
+
             </div>
         </form><!-- form -->
         <div class="button">
