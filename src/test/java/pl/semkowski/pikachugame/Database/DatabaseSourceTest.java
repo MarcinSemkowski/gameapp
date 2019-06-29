@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class DatabaseSourceTest {
 
     private DatabaseSource databaseSource;
@@ -32,7 +30,7 @@ public class DatabaseSourceTest {
        //when
         String email = "test@gmail.com";
         //then
-        Assert.assertTrue(databaseSource.isPlayerInDatabase(email));
+        Assert.assertTrue(databaseSource.isEmailInDatabase(email));
     }
     @Test
     public void addingNewPlayer_shouldReturnTrue(){
