@@ -1,10 +1,23 @@
 package pl.semkowski.pikachugame.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Player {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
+    private String password;
+
     private long money;
     private int pokemon;
+    @Column(nullable = false)
     private String email;
 
     public Player(String name, long money, int pokemon,String email) {

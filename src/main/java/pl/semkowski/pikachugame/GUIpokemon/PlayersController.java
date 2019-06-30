@@ -1,12 +1,12 @@
 package pl.semkowski.pikachugame.GUIpokemon;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.semkowski.pikachugame.Database.DatabaseSource;
-import pl.semkowski.pikachugame.domain.HashPassword;
 import pl.semkowski.pikachugame.domain.Player;
 
 @Controller
@@ -17,6 +17,12 @@ public class PlayersController {
 
 //todo: Ad Spring Security
 //todo: Feature: (Lost your password?)
+
+
+   @GetMapping("/login")
+   public String login(){
+       return "login";
+   }
 
 
     @PostMapping("sign_up")
@@ -38,20 +44,25 @@ public class PlayersController {
                 return "Index";
             }
 
-             String hashpass = HashPassword.hash(password);
+        BCryptPasswordEncoder hashPass = new BCryptPasswordEncoder();
 
         Player player = new Player(nick,100,1,email);
 
-         databaseSource.addingNewPlayerToDatabase(player,hashpass);
+         databaseSource.addingNewPlayerToDatabase(player,hashPass.encode(password));
 
 
         return null;
     }
-
-
     @GetMapping("/sign_in")
     public String SignIn() {
         return null;
+    }
+
+
+    @GetMapping("/home")
+    public String main() {
+
+        return "main";
     }
 
 
