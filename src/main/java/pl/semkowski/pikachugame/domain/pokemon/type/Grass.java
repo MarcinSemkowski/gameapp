@@ -1,4 +1,4 @@
-package pl.semkowski.pikachugame.type;
+package pl.semkowski.pikachugame.domain.pokemon.type;
 
 import pl.semkowski.pikachugame.domain.Pokemon;
 

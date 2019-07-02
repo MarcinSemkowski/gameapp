@@ -1,4 +1,4 @@
-package pl.semkowski.pikachugame.type;
+package pl.semkowski.pikachugame.domain.pokemon.type;
 
 public interface Ice {
 

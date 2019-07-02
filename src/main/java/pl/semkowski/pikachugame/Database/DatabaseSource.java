@@ -1,6 +1,7 @@
 package pl.semkowski.pikachugame.Database;
 
-import pl.semkowski.pikachugame.domain.Player;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import pl.semkowski.pikachugame.Player.Player;
 
 import java.sql.*;
 
@@ -13,18 +14,29 @@ public class DatabaseSource {
 
     private static final String CONNNECTION_STRING = "jdbc:mysql://localhost:3306/" + DB_NAME;
 
-    private static final String IS_PLAYER_EMAIL = "SELECT * FROM " + Database_tables.PLAYERS.getTablePlayers() +
-            " WHERE " + Database_tables.PLAYERS.getEmail() + " = ? ";
+    private static final String IS_PLAYER_EMAIL = "SELECT * FROM " + Database_tables.PLAYERS.getPLAYERS_tablePlayers()+
+            " WHERE " + Database_tables.PLAYERS.getPLAYERS_email() + " = ? ";
 
-    private static final String IS_PLAYER_NICK = "SELECT * FROM " + Database_tables.PLAYERS.getTablePlayers() +
-            " WHERE " + Database_tables.PLAYERS.getNick() + " = ? ";
+    private static final String IS_PLAYER_NICK = "SELECT * FROM " + Database_tables.PLAYERS.getPLAYERS_tablePlayers() +
+            " WHERE " + Database_tables.PLAYERS.getPLAYERS_userName() + " = ? ";
 
-    private static final String ADD_NEW_PLAYER_TO_DATABASE = "INSERT INTO "
-            + Database_tables.PLAYERS.getTablePlayers() + "("
-     + " " + Database_tables.PLAYERS.getNick() + ","
-      + " " +   Database_tables.PLAYERS.getEmail() + ","
-            + " " +  Database_tables.PLAYERS.getPassword() + ","
-            + " " +  Database_tables.PLAYERS.getPokemonId() + ") " + "VALUES (?, ?, ?, ?)";
+    private static final String ADD_NEW_PLAYER_TO_DATABASE = "INSERT INTO " +
+            Database_tables.PLAYERS.getPLAYERS_tablePlayers() +
+            "(" +
+            Database_tables.PLAYERS.getPLAYERS_userName() + ", " +
+            Database_tables.PLAYERS.getPLAYERS_password() + ", " +
+            Database_tables.PLAYERS.getPLAYERS_enabled() + ", " +
+            Database_tables.PLAYERS.getPLAYERS_pokemonId() + ", " +
+            Database_tables.PLAYERS.getPLAYERS_email() +
+            ") VALUES (?, ?, ?, ?, ?)";
+
+    private static final  String INSERT_INTO_AUTHORITIES = "INSERT INTO " +
+            Database_tables.PLAYERS.getAUTHORITIES_table_authorities() +
+            "(" +
+            Database_tables.PLAYERS.getAUTHORITIES_userName() + ", " +
+            Database_tables.PLAYERS.getAUTHORITIES_authority() +
+            ") VALUES (?, ?)";
+
 
 
 
@@ -96,13 +108,21 @@ public class DatabaseSource {
     public boolean addingNewPlayerToDatabase(Player player,String password){
 
         try(Connection conn = DriverManager.getConnection(CONNNECTION_STRING,USER,PASSWORD);
-                PreparedStatement query = conn.prepareStatement(ADD_NEW_PLAYER_TO_DATABASE)) {
+                PreparedStatement queryPlayer = conn.prepareStatement(ADD_NEW_PLAYER_TO_DATABASE);
+                PreparedStatement queryAuthorities = conn.prepareStatement(INSERT_INTO_AUTHORITIES)
+               ) {
+              BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                queryPlayer.setString(1, player.getUserName());
+                queryPlayer.setString(2, passwordEncoder.encode(password) );
+                queryPlayer.setBoolean(3,player.isEnabled());
+                queryPlayer.setInt(4, 0);
+                queryPlayer.setString(5,player.getEmail());
 
-                query.setString(1, player.getName());
-                query.setString(2,player.getEmail());
-                query.setString(3,password);
-                query.setInt(4, 0);
-                query.executeUpdate();
+                queryPlayer.executeUpdate();
+                queryAuthorities.setString(1,player.getUserName());
+                queryAuthorities.setString(2,player.getRole());
+                //todo : improve INSERT use(hibernate or something else )
+                queryAuthorities.executeUpdate();
                 System.out.println("New player added");
                 return true;
 

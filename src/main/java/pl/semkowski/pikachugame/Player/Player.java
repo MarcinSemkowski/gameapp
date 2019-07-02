@@ -1,30 +1,32 @@
-package pl.semkowski.pikachugame.domain;
+package pl.semkowski.pikachugame.Player;
 
-import javax.persistence.*;
 
-@Entity
 public class Player {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private String password;
-
+    private String userName;
     private long money;
     private int pokemon;
-    @Column(nullable = false)
     private String email;
+    private boolean enabled;
+    private String role;
 
-    public Player(String name, long money, int pokemon,String email) {
-        this.name = name;
+
+    public Player(String name, long money, int pokemon, String email) {
+        this.userName = name;
         this.money = money;
         this.pokemon = pokemon;
         this.email = email;
+        this.enabled = true;
+        this.role = "ROLE_PLAYER";
+
+    }
+
+    public long getId() {
+        return id;
+    }
+    public boolean isEnabled() {
+        return enabled;
     }
 
 
@@ -36,12 +38,12 @@ public class Player {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public long getMoney() {
@@ -58,5 +60,10 @@ public class Player {
 
     public void setPokemon(int pokemon) {
         this.pokemon = pokemon;
+    }
+
+
+    public String getRole() {
+        return role;
     }
 }

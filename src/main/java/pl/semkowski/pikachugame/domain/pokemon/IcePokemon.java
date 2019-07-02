@@ -1,7 +1,7 @@
 package pl.semkowski.pikachugame.domain.pokemon;
 
 import pl.semkowski.pikachugame.domain.Pokemon;
-import pl.semkowski.pikachugame.type.Ice;
+import pl.semkowski.pikachugame.domain.pokemon.type.Ice;
 
 public class IcePokemon extends Pokemon implements Ice {
 

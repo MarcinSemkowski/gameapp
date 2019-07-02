@@ -1,39 +1,41 @@
 package pl.semkowski.pikachugame.GUIpokemon;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import javax.sql.DataSource;
+
+
 
 @Configuration
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("player")
-                .password(passwordEncoder().encode("player123"))
-                .roles("PLAYER")
-                .and()
-                .withUser("dan").password(passwordEncoder().encode("dan123")).roles("ADMIN");
+    @Autowired
+    private DataSource  dataSource;
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder  authenticationManagerMgr ) throws  Exception{
+      authenticationManagerMgr
+              .jdbcAuthentication()
+              .dataSource(dataSource)
+              .passwordEncoder(new BCryptPasswordEncoder())
+              .usersByUsernameQuery("SELECT username,password,enabled,pokemon_id,email FROM  users  WHERE username = ? ");
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/index")
+                .antMatchers("/index.html")
                 .permitAll()
+                .antMatchers("/home")
+                .hasRole("PLAYER")
                 .and()
-                .antMatcher("/home")
                 .formLogin()
                 .successForwardUrl("/home")
                 .and()
@@ -44,10 +46,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+
 
 
 }

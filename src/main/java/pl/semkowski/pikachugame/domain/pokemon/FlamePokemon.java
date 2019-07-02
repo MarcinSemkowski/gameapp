@@ -1,7 +1,7 @@
 package pl.semkowski.pikachugame.domain.pokemon;
 
 import pl.semkowski.pikachugame.domain.Pokemon;
-import pl.semkowski.pikachugame.type.Flame;
+import pl.semkowski.pikachugame.domain.pokemon.type.Flame;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

@@ -2,60 +2,77 @@ package pl.semkowski.pikachugame.Database;
 
 public enum Database_tables {
 
-PLAYERS("p_id","p_nick","p_email","p_password","p_pokemon_id");
+PLAYERS(),
+    AUTHORITIES();
 
 
 
 
-private final String tablePlayers;
-private  final String id;
-private  final String nick;
-private final String  email;
-private final String password;
-private final String pokemonId;
-
-private final String level;
 
 
 
-Database_tables(String id, String nick, String email, String password, String pokemonId) {
-        this.id = id;
-        this.nick = nick;
-        this.email = email;
-        this.password = password;
-        this.pokemonId = pokemonId;
-        this.level = "pokemon_level";
-        this.tablePlayers = "players";
 
+private final String PLAYERS_tablePlayers;
+private  final String PLAYERS_userName;
+private final String PLAYERS_enabled;
+private final String  PLAYERS_email;
+private final String PLAYERS_password;
+private final String PLAYERS_pokemonId;
+
+
+private final String AUTHORITIES_table_authorities;
+private final String AUTHORITIES_userName;
+private final String AUTHORITIES_authority;
+
+
+
+
+Database_tables(){
+        this.PLAYERS_userName = "username" ;
+        this.PLAYERS_email = "email";
+        this.PLAYERS_password = "password";
+        this.PLAYERS_pokemonId = "pokemon_id";
+        this.PLAYERS_enabled = "enabled";
+        this.PLAYERS_tablePlayers = "users";
+        this.AUTHORITIES_table_authorities = "authorities";
+        this.AUTHORITIES_userName = "username";
+        this.AUTHORITIES_authority = "authority";
     }
 
 
-
-    public String getId() {
-        return id;
+    public String getPLAYERS_tablePlayers() {
+        return PLAYERS_tablePlayers;
     }
 
-    public String getNick() {
-        return nick;
+    public String getPLAYERS_userName() {
+        return PLAYERS_userName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPLAYERS_enabled() {
+        return PLAYERS_enabled;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPLAYERS_email() {
+        return PLAYERS_email;
     }
 
-    public String getPokemonId() {
-        return pokemonId;
+    public String getPLAYERS_password() {
+        return PLAYERS_password;
     }
 
-    public String getLevel() {
-        return level;
+    public String getPLAYERS_pokemonId() {
+        return PLAYERS_pokemonId;
     }
 
-    public String getTablePlayers() {
-        return tablePlayers;
+    public String getAUTHORITIES_userName() {
+        return AUTHORITIES_userName;
+    }
+
+    public String getAUTHORITIES_authority() {
+        return AUTHORITIES_authority;
+    }
+
+    public String getAUTHORITIES_table_authorities() {
+        return AUTHORITIES_table_authorities;
     }
 }

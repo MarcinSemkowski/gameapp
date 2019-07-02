@@ -1,9 +1,7 @@
 package pl.semkowski.pikachugame.domain.pokemon;
 
 import pl.semkowski.pikachugame.domain.Pokemon;
-import pl.semkowski.pikachugame.type.Electric;
-
-import java.util.concurrent.ThreadLocalRandom;
+import pl.semkowski.pikachugame.domain.pokemon.type.Electric;
 
 public class ElectricPokemon extends Pokemon implements Electric {
 

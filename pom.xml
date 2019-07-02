@@ -11,7 +11,7 @@
     <groupId>pl.semkowski</groupId>
     <artifactId>pikachugame</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>pikachugame</name>
+    <userName>pikachugame</userName>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -51,6 +51,8 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.16</version>
         </dependency>
+
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
         <dependency>

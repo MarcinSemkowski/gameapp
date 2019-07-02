@@ -42,15 +42,15 @@
         <td th:if="${isPlayerChoose_1}" >
             <form method= post action="fight">
                 <div class="styled-select blue semi-square" >
-                <select name="id">
+                <select userName="id">
                     <option   class="base" value="1">Atak</option>
                     <option  class="base" value="2">Obrona</option>
                     <option class="skills" value="3" th:text="${player1.getSkillOneName()}">Skill one </option>
                     <option class="skills" value="4" th:text="${player1.getSkillTwoName()}">Skill two </option>
                     <option class="spec" value="5" th:text="${player1.getSkillSpecialName()}">  special</option>
                 </select> </div>
-                <input type="hidden" value="1" name="playerId">
-                <input type="hidden" value="2" name="chooseId">
+                <input type="hidden" value="1" userName="playerId">
+                <input type="hidden" value="2" userName="chooseId">
                 <input type="submit" value="choose">
 
             </form>
@@ -113,15 +113,15 @@
         <td th:unless="${isPlayerChoose_1}" >
             <form method= post action="fight">
                 <div class="styled-select blue semi-square">
-                    <select name="id">
+                    <select userName="id">
                         <option   class="base" value="1"> Atak</option>
                         <option  class="base" value="2">Obrona</option>
                         <option class="skills" value="3" th:text="${player2.getSkillOneName()}"></option>
                         <option class="skills" value="4" th:text="${player2.getSkillTwoName()}"> </option>
                         <option class="spec" value="5" th:text="${player2.getSkillSpecialName()}"></option>
                     </select></div>
-                <input type="hidden" value="2" name="playerId">
-                <input type="hidden" value="1" name="chooseId">
+                <input type="hidden" value="2" userName="playerId">
+                <input type="hidden" value="1" userName="chooseId">
                 <input type="submit" value="choose">
 
             </form>

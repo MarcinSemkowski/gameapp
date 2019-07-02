@@ -1,7 +1,7 @@
 package pl.semkowski.pikachugame.domain.pokemon;
 
 import pl.semkowski.pikachugame.domain.Pokemon;
-import pl.semkowski.pikachugame.type.Grass;
+import pl.semkowski.pikachugame.domain.pokemon.type.Grass;
 
 import java.util.Random;
 
