@@ -23,7 +23,9 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
               .jdbcAuthentication()
               .dataSource(dataSource)
               .passwordEncoder(new BCryptPasswordEncoder())
-              .usersByUsernameQuery("SELECT username,password,enabled,pokemon_id,email FROM  users  WHERE username = ? ");
+              .usersByUsernameQuery("SELECT username,password,enabled,pokemon_id,email FROM  users  WHERE username = ? ")
+              .authoritiesByUsernameQuery("SELECT username,authority FROM authorities WHERE username = ?");
+
     }
 
 
@@ -31,15 +33,17 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/index.html")
+                .antMatchers("/")
                 .permitAll()
                 .antMatchers("/home")
                 .hasRole("PLAYER")
                 .and()
-                .formLogin()
-                .successForwardUrl("/home")
+               .formLogin()
+                .usernameParameter("username")
+                .defaultSuccessUrl("/home")
                 .and()
                 .logout();
+
 
 
 

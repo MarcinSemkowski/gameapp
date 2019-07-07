@@ -14,7 +14,6 @@ import java.util.List;
 
 @Controller
 public class ArenaController {
-
     public boolean error;
 
     private boolean player1Won = false;

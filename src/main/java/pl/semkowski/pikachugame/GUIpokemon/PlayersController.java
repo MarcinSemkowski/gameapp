@@ -1,11 +1,12 @@
 package pl.semkowski.pikachugame.GUIpokemon;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.semkowski.pikachugame.Database.DatabaseSource;
+import pl.semkowski.pikachugame.Player.Player;
 
 @Controller
 public class PlayersController {
@@ -46,23 +47,21 @@ public class PlayersController {
 
 
 
-        return null;
+        return "";
     }
     @GetMapping("/sign_in")
     public String SignIn() {
-        return null;
+        return "sign_in";
     }
 
 
     @GetMapping("/home")
-    public String main() {
+    public String main( ) {
 
-        return "/Player/main";
+
+        return "Player/main";
     }
-    @PostMapping("/home")
-    public String get(){
-       return "Player/main";
-    }
+
 
 
 }
