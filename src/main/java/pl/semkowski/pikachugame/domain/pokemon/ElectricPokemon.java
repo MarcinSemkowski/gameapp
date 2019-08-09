@@ -5,6 +5,9 @@ import pl.semkowski.pikachugame.domain.pokemon.type.Electric;
 
 public class ElectricPokemon extends Pokemon implements Electric {
 
+
+
+
     private final String SKILL_1_NAME = " Uderzenie piorunem";
     private final String SKILL_1_DESCRIPTION =  this.getName() + "strzela wstrząsem elektryczności, aby zaatakować cel.\n" +
             "\n" +
