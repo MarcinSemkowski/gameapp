@@ -1,25 +1,40 @@
 package pl.semkowski.pikachugame.Player;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "users")
 public class Player {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+     @Column(name = "username")
     private String userName;
-    private long money;
-    private int pokemon;
-    private String email;
-    private boolean enabled;
+    @Column(name = "password")
+     private String password;
+
+     @Column(name = "role")
     private String role;
 
+    @Column(name = "money")
+     private long money;
+     @Column(name = "pokemon_id")
+    private int pokemon;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "enabled")
+    private boolean enabled;
 
-    public Player(String name, long money, int pokemon, String email) {
+
+
+    public Player(String name, long money, int pokemon, String email,String password) {
         this.userName = name;
         this.money = money;
         this.pokemon = pokemon;
         this.email = email;
         this.enabled = true;
-        this.role = "ROLE_PLAYER";
-
+        this.password = password;
+        role = "ROLE_PLAYER";
     }
 
     public long getId() {
@@ -62,6 +77,9 @@ public class Player {
         this.pokemon = pokemon;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
     public String getRole() {
         return role;
