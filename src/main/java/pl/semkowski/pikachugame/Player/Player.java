@@ -26,8 +26,11 @@ public class Player {
     private boolean enabled;
 
 
+    public Player() {
 
-    public Player(String name, long money, int pokemon, String email,String password) {
+    }
+
+    public Player(String name, long money, int pokemon, String email, String password) {
         this.userName = name;
         this.money = money;
         this.pokemon = pokemon;
@@ -40,6 +43,11 @@ public class Player {
     public long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }
