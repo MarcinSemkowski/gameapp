@@ -1,4 +1,4 @@
-package pl.semkowski.pikachugame.GUIpokemon;
+package pl.semkowski.pikachugame.controllers;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.security.core.userdetails.User;

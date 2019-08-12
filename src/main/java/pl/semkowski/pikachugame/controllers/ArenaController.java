@@ -1,10 +1,11 @@
-package pl.semkowski.pikachugame.GUIpokemon;
+package pl.semkowski.pikachugame.controllers;
 
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.semkowski.pikachugame.GUIpokemon.Fight;
 import pl.semkowski.pikachugame.domain.Pokemon;
 import pl.semkowski.pikachugame.domain.pokemon.ElectricPokemon;
 import pl.semkowski.pikachugame.domain.pokemon.FlamePokemon;
