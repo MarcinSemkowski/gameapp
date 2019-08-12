@@ -1,45 +1,29 @@
-package pl.semkowski.pikachugame.Player;
+package pl.semkowski.pikachugame.commands;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "users")
-public class Player {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PlayerCommand {
+
     private Long id;
-     @Column(name = "username")
-    private String userName;
-    @Column(name = "password")
-     private String password;
 
-     @Column(name = "role")
+    private String userName;
+
+    private String password;
+
     private String role;
 
-    @Column(name = "money")
-     private long money;
-     @Column(name = "pokemon_id")
+
+    private long money;
+
     private int pokemon;
-    @Column(name = "email")
+
     private String email;
-    @Column(name = "enabled")
+
     private boolean enabled;
 
 
 
-    public Player(String name, long money, int pokemon, String email,String password) {
-        this.userName = name;
-        this.money = money;
-        this.pokemon = pokemon;
-        this.email = email;
-        this.enabled = true;
-        this.password = password;
-        role = "ROLE_PLAYER";
-    }
 
-    public long getId() {
-        return id;
-    }
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -84,4 +68,5 @@ public class Player {
     public String getRole() {
         return role;
     }
+
 }

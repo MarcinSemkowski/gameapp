@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PikachugameApplication {
      //todo add Enum  Pokemon
      // todo: Spring Security
-     //todo: Feature: Sign Up
+     //todo:  Sign Up
      //todo: Feature: (Lost your password?)
 
 
