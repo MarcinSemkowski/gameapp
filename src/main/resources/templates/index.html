@@ -9,19 +9,19 @@
 
 <div class="container">
     <section id="content">
-        <form  th:object="${player}" th:action="@{/player}"  method="post">
+        <form  th:object="${player}" th:action="@{/add}"  method="post">
             <h1>Pokemon Game App </h1>
             <p>Zarejestruj się:</p>
             <div>
-                <input type="text" placeholder="Nick:" required="" id="nick" />
+                <input type="text" placeholder="Nick:" required="" th:field="*{userName}" />
 
             </div>
 
             <div>
-                <input type="text" placeholder="Adres e-mail:" required="" id="email" />
+                <input type="text" placeholder="Adres e-mail:" required="" th:field="*{email}" />
             </div>
             <div>
-                <input type="password" placeholder="Hasło:" required="" id="password" />
+                <input type="password" placeholder="Hasło:" required=""  th:field="*{password}"  />
             </div>
             <div>
                 <input type="submit" value="Zarejestruj się" />

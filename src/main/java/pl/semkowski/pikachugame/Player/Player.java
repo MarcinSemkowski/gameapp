@@ -14,30 +14,29 @@ public class Player {
      private String password;
 
      @Column(name = "role")
-    private String role;
+    private final String role = "ROLE_PLAYER";
 
     @Column(name = "money")
-     private long money;
+     private long money = 10;
      @Column(name = "pokemon_id")
-    private int pokemon;
+    private int pokemon = 1;
     @Column(name = "email")
     private String email;
     @Column(name = "enabled")
-    private boolean enabled;
+    private boolean enabled = true;
 
 
     public Player() {
 
     }
 
-    public Player(String name, long money, int pokemon, String email, String password) {
+    public Player(String name, String email, String password) {
         this.userName = name;
-        this.money = money;
-        this.pokemon = pokemon;
+        this.money = 0;
+        this.pokemon = 1;
         this.email = email;
         this.enabled = true;
         this.password = password;
-        role = "ROLE_PLAYER";
     }
 
     public Long getId() {
@@ -91,5 +90,9 @@ public class Player {
 
     public String getRole() {
         return role;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

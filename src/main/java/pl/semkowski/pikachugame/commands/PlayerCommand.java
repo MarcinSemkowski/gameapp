@@ -12,9 +12,9 @@ public class PlayerCommand {
     private String role;
 
 
-    private long money;
+    private long money = 10;
 
-    private int pokemon;
+    private int pokemon = 1;
 
     private String email;
 
