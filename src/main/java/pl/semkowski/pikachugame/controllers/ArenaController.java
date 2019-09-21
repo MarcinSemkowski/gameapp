@@ -37,7 +37,7 @@ public class ArenaController {
         model.addAttribute("player1", player1);
 
         model.addAttribute("player2", player2);
-        return "arena";
+        return "Arena/arena";
     }
 
 

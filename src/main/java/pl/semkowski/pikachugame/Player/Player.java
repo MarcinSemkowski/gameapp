@@ -40,7 +40,7 @@ public class Player {
         role = "ROLE_PLAYER";
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

@@ -1,11 +1,11 @@
 package pl.semkowski.pikachugame.controllers;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
-import org.springframework.security.core.userdetails.User;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import pl.semkowski.pikachugame.commands.PlayerCommand;
 
 
 @Controller
@@ -21,9 +21,10 @@ public class PlayersController {
    }
 
 
-    @PostMapping("sign_up")
-    public String SignUp(){
-        return "";
+    @RequestMapping("/")
+    public String SignUp(Model model){
+        model.addAttribute("player",new PlayerCommand());
+        return "index";
     }
 
 
@@ -33,9 +34,11 @@ public class PlayersController {
 
 
 
-    @GetMapping("/sign_in")
+
     public String SignIn() {
-        return "sign_in";
+
+       return "sign_in";
+
     }
 
 

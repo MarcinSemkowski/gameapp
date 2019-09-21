@@ -9,7 +9,7 @@ import pl.semkowski.pikachugame.repositories.PlayerRepository;
 
 import javax.transaction.Transactional;
 @Component
-public class PlayerBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class PlayerBootstrap  {
 
    private  final  PlayerRepository playerRepository;
 
@@ -18,14 +18,5 @@ public class PlayerBootstrap implements ApplicationListener<ContextRefreshedEven
         this.playerRepository = playerRepository;
     }
 
-    @Override
-    @Transactional
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        Player marcin = new Player("Marcin"
-                ,1000
-                ,1
-                , "test@mail.com"
-                ,PasswordHash.hash("zxcvbnm"));
-        playerRepository.save(marcin);
-    }
+
 }
