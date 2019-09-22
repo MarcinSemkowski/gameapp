@@ -43,7 +43,7 @@ public class PlayersController {
     }
 
 
-    @GetMapping("/home")
+    @RequestMapping ("/home")
     public String main( ) {
 
 
